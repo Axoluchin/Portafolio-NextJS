@@ -18,7 +18,7 @@ const Header = () => (
     <Link color={'text'} href="/">
      <Text h5>Inicio</Text>
     </Link>
-    <Link color={'text'} href="/">
+    <Link color={'text'} href="/Portafolio">
      <Text h5>Portafolio</Text>
     </Link>
     <Link color={'text'} href="/Blog">
