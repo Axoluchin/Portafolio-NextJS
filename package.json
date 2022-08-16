@@ -1,24 +1,161 @@
 {
-  "name": "code-p-2022",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+ "name": "code-p-2022",
+ "version": "0.1.0",
+ "private": true,
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+ },
+ "dependencies": {
+  "@nextui-org/react": "^1.0.0-beta.9",
+  "next": "12.2.5",
+  "react": "18.2.0",
+  "react-dom": "18.2.0"
+ },
+ "devDependencies": {
+  "@next/eslint-plugin-next": "^12.2.5",
+  "@types/node": "18.7.6",
+  "@types/react": "18.0.17",
+  "@types/react-dom": "18.0.6",
+  "eslint": "8.22.0",
+  "eslint-config-next": "12.2.5",
+  "eslint-config-standard": "^16.0.3",
+  "eslint-plugin-immutable": "^1.0.0",
+  "eslint-plugin-import": "^2.25.4",
+  "eslint-plugin-jsx-a11y": "^6.5.1",
+  "eslint-plugin-no-loops": "^0.3.0",
+  "eslint-plugin-node": "^11.1.0",
+  "eslint-plugin-prefer-arrow": "^1.2.3",
+  "eslint-plugin-promise": "^6.0.0",
+  "eslint-plugin-react": "^7.30.0",
+  "eslint-plugin-react-hooks": "^4.4.0",
+  "prettier": "^2.6.1",
+  "prettier-eslint": "^13.0.0",
+  "prettier-eslint-cli": "^5.0.1",
+  "typescript": "4.7.4"
+ },
+ "prettier": {
+  "printWidth": 80,
+  "tabWidth": 1,
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "avoid"
+ },
+ "eslintConfig": {
+  "ignorePatterns": [
+   "node_modules/",
+   "build/",
+   "public/"
+  ],
+  "env": {
+   "browser": true,
+   "es2021": true,
+   "node": true
   },
-  "dependencies": {
-    "next": "12.2.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+  "extends": [
+   "plugin:react/recommended",
+   "standard",
+   "plugin:jsx-a11y/recommended",
+   "plugin:promise/recommended"
+  ],
+  "settings": {
+   "react": {
+    "createClass": "createReactClass",
+    "pragma": "React",
+    "fragment": "Fragment",
+    "version": "detect"
+   }
   },
-  "devDependencies": {
-    "@types/node": "18.7.6",
-    "@types/react": "18.0.17",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.22.0",
-    "eslint-config-next": "12.2.5",
-    "typescript": "4.7.4"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+   "ecmaFeatures": {
+    "jsx": true
+   },
+   "ecmaVersion": "latest",
+   "sourceType": "module"
+  },
+  "plugins": [
+   "react",
+   "@typescript-eslint",
+   "react-hooks",
+   "prefer-arrow",
+   "jsx-a11y",
+   "promise",
+   "no-loops",
+   "immutable"
+  ],
+  "rules": {
+   "react/react-in-jsx-scope": "off",
+   "arrow-body-style": [
+    "error",
+    "as-needed"
+   ],
+   "react/jsx-curly-brace-presence": [
+    "error",
+    {
+     "props": "never",
+     "children": "never"
+    }
+   ],
+   "react/self-closing-comp": [
+    "error",
+    {
+     "component": true,
+     "html": true
+    }
+   ],
+   "react/jsx-no-useless-fragment": "error",
+   "func-style": [
+    "error",
+    "expression"
+   ],
+   "prefer-arrow-callback": "error",
+   "react/display-name": "off",
+   "react-hooks/exhaustive-deps": [
+    "off",
+    {
+     "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+    }
+   ],
+   "prefer-arrow/prefer-arrow-functions": [
+    "error",
+    {
+     "disallowPrototype": true,
+     "singleReturnOnly": false,
+     "classPropertiesAllowed": false
+    }
+   ],
+   "react/jsx-sort-props": [
+    "error",
+    {
+     "callbacksLast": true,
+     "shorthandFirst": true,
+     "shorthandLast": true,
+     "reservedFirst": true
+    }
+   ],
+   "@typescript-eslint/no-explicit-any": [
+    "error",
+    {
+     "fixToUnknown": true
+    }
+   ],
+   "react/button-has-type": "error",
+   "react/no-array-index-key": "error",
+   "react/no-deprecated": "error",
+   "react/no-typos": "error",
+   "react/no-unsafe": "error",
+   "react/sort-prop-types": "error",
+   "react/static-property-placement": "error",
+   "no-loops/no-loops": "error",
+   "immutable/no-let": "error",
+   "immutable/no-this": "error"
   }
+ }
 }
