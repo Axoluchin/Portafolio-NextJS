@@ -1,9 +1,8 @@
 import { Text } from "@nextui-org/react"
 
 const SubTitle = ({text}:{text:string}) => (
-    <Text size={'3rem'} style={{
+    <Text size={'3rem'} h2 style={{
         textAlign: 'center',
-        fontStyle: "italic",
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
         maxWidth: '75%',

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Grid } from '@nextui-org/react'
 
 import useIsMounted from '../hooks/useIsMounted'
 import CardProject from '../components/CardProject'
@@ -24,9 +25,13 @@ const Portafolio = () => {
  return (
   <div>
    <SubTitle text="Experiencia" />
-   {projectList.map(data => (
-    <CardProject key={data.id} project={data} />
-   ))}
+   <Grid.Container gap={2} justify="center">
+    {projectList.map(data => (
+     <Grid key={data.id} xs={6} md={3}>
+      <CardProject project={data} />
+     </Grid>
+    ))}
+   </Grid.Container>
   </div>
  )
 }
