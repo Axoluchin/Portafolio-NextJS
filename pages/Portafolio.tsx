@@ -32,6 +32,8 @@ const Portafolio = () => {
      </Grid>
     ))}
    </Grid.Container>
+   <SubTitle text="Skills" />
+   <SubTitle text="Contacto" />
   </div>
  )
 }

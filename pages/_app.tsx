@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { NextUIProvider } from '@nextui-org/react'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import mainTheme from '../utils/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   <NextUIProvider theme={mainTheme}>
    <Header />
    <Component {...pageProps} />
+   <Footer/>
   </NextUIProvider>
  )
 }
