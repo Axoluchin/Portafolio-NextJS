@@ -10,6 +10,13 @@ export interface project {
  desc: string
 }
 
+export interface codeLenguaje {
+    image: string,
+    name: string,
+    rating: number,
+    id: string
+}
+
 export interface video {
  image: string
  title: string

@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Grid, Text, Link } from '@nextui-org/react'
+import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5'
 
 import useIsMounted from '../hooks/useIsMounted'
 import CardProject from '../components/CardProject'
+import CardCode from '../components/CardCode'
 import SubTitle from '../components/SubTitle'
-import { getProjects } from '../utils/firebase'
-import { project } from '../utils/types'
-import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5'
+import { getProjects, getCodeLenguajes } from '../utils/firebase'
+import { project, codeLenguaje } from '../utils/types'
 
 const Portafolio = () => {
  const IsMounted = useIsMounted()
  const [projectList, setProjectList] = useState<project[]>([])
+const [codeList, setCodeList] = useState<codeLenguaje[]>([])
 
  useEffect(() => {
-  const getDBData = async () => {
-   setProjectList(await getProjects())
-  }
-  getDBData()
+  getProjects().then(data => setProjectList(data))
+  getCodeLenguajes().then(data => setCodeList(data))
  }, [])
 
  if (!IsMounted) {
@@ -34,6 +34,13 @@ const Portafolio = () => {
     ))}
    </Grid.Container>
    <SubTitle text="Skills" />
+   <Grid.Container gap={1} justify="center">
+    {codeList.map(data => (
+     <Grid key={data.id}>
+      <CardCode data={data}/>
+     </Grid>
+    ))}
+   </Grid.Container>
    <SubTitle text="Contacto" />
    <Grid.Container gap={4} justify="space-around">
     <Grid>
