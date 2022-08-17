@@ -1,5 +1,5 @@
-import { Card, Text, Link, Spacer, Grid } from '@nextui-org/react'
-import { IoLogoGithub, IoGlobeOutline } from 'react-icons/io5'
+import { Card, Text, Link, Grid } from '@nextui-org/react'
+import { IoLogoGithub } from 'react-icons/io5'
 
 import LenguajeChip from './LenguajeChip'
 import { project } from '../utils/types'
@@ -40,9 +40,8 @@ const CardProject = ({ project }: { project: project }) => (
   <Card.Divider />
   <Card.Footer>
    {project.webPage && (
-    <Link href={project.webPage}>
-     <Text color="primary">
-      <IoGlobeOutline /> Sitio Web
+    <Link href={project.webPage} target='_blank' icon color="primary">
+     <Text color="primary">Sitio Web
      </Text>
     </Link>
    )}

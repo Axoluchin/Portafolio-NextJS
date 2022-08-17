@@ -5,7 +5,7 @@ const Footer = () => {
  return (
   <div
    style={{
-    height: '12rem',
+    height: '5rem',
     borderTopStyle: 'solid',
     borderTopWidth: 1,
     borderTopColor: theme?.colors.neutralBorder.value,
@@ -18,7 +18,7 @@ const Footer = () => {
      textAlign: 'center',
     }}
    >
-    Damián Huchin 2022
+    Damián Hernández Huchín 2022
    </Text>
   </div>
  )
