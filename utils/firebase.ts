@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, getDocs, collection,query, orderBy } from 'firebase/firestore'
 
-import { project, codeLenguaje } from './types'
+import { project, codeLenguaje, blog } from './types'
 
 const firebaseConfig = {
  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -19,6 +19,7 @@ const db = getFirestore(app)
 const CollectionProjects = 'projects'
 const CollectionCode = 'codeLenguaje'
 const CollectionTools = 'tools'
+const CollectionBlog = 'blog'
 
 export const getProjects = async () => {
  const querySnapshot = await getDocs(query(collection(db, CollectionProjects)))
@@ -60,4 +61,17 @@ export const getTools = async () => {
     })
    
     return projectList
+   }
+
+   export const getBlogs = async () => {
+    const querySnapshot = await getDocs(query(collection(db, CollectionBlog)))
+    const blogList: blog[] = []
+    querySnapshot.forEach(doc => {
+     const project = {
+      ...doc.data(),
+      id: doc.id,
+     } as blog
+     blogList.push(project)
+    })
+    return blogList
    }

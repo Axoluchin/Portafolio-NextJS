@@ -30,4 +30,5 @@ export interface blog {
     desc: string,
     startText: string,
     blog: string[]
+    id: string
 }
