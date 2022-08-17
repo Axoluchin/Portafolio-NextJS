@@ -18,6 +18,7 @@ const db = getFirestore(app)
 
 const CollectionProjects = 'projects'
 const CollectionCode = 'codeLenguaje'
+const CollectionTools = 'tools'
 
 export const getProjects = async () => {
  const querySnapshot = await getDocs(query(collection(db, CollectionProjects)))
@@ -46,3 +47,17 @@ export const getCodeLenguajes = async () => {
 
  return projectList
 }
+
+export const getTools = async () => {
+    const querySnapshot = await getDocs(query(collection(db, CollectionTools),orderBy('rating','desc')))
+    const projectList: codeLenguaje[] = []
+    querySnapshot.forEach(doc => {
+     const project = {
+      ...doc.data(),
+      id: doc.id,
+     } as codeLenguaje
+     projectList.push(project)
+    })
+   
+    return projectList
+   }

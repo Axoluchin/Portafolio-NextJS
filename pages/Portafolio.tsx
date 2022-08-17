@@ -6,17 +6,20 @@ import useIsMounted from '../hooks/useIsMounted'
 import CardProject from '../components/CardProject'
 import CardCode from '../components/CardCode'
 import SubTitle from '../components/SubTitle'
-import { getProjects, getCodeLenguajes } from '../utils/firebase'
+import MiniTitle from '../components/MiniTittle'
+import { getProjects, getCodeLenguajes, getTools } from '../utils/firebase'
 import { project, codeLenguaje } from '../utils/types'
 
 const Portafolio = () => {
  const IsMounted = useIsMounted()
  const [projectList, setProjectList] = useState<project[]>([])
-const [codeList, setCodeList] = useState<codeLenguaje[]>([])
+ const [codeList, setCodeList] = useState<codeLenguaje[]>([])
+const [toolList, setToolList] = useState<codeLenguaje[]>([])
 
  useEffect(() => {
   getProjects().then(data => setProjectList(data))
   getCodeLenguajes().then(data => setCodeList(data))
+  getTools().then(data => setToolList(data))
  }, [])
 
  if (!IsMounted) {
@@ -34,10 +37,19 @@ const [codeList, setCodeList] = useState<codeLenguaje[]>([])
     ))}
    </Grid.Container>
    <SubTitle text="Skills" />
+   <MiniTitle title="Lenguajes y Frameworks" position="left" />
    <Grid.Container gap={1} justify="center">
     {codeList.map(data => (
      <Grid key={data.id}>
-      <CardCode data={data}/>
+      <CardCode data={data} />
+     </Grid>
+    ))}
+   </Grid.Container>
+   <MiniTitle title="Herramientas" position="right" />
+   <Grid.Container gap={1} justify="center">
+    {toolList.map(data => (
+     <Grid key={data.id}>
+      <CardCode data={data} />
      </Grid>
     ))}
    </Grid.Container>
@@ -58,7 +70,7 @@ const [codeList, setCodeList] = useState<codeLenguaje[]>([])
      </Link>
     </Grid>
     <Grid>
-     <Link href='https://twitter.com/DamianHuchin' target='_blank'>
+     <Link href="https://twitter.com/DamianHuchin" target="_blank">
       <Text h2 color="$blue700">
        <IoLogoTwitter /> Twitter
       </Text>

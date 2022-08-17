@@ -21,14 +21,16 @@ const Header = () => {
    }}
   >
    <Grid xs={6}>
-    <Text
-     h3
-     css={{
-      textGradient: '45deg, $green600 -20%, $blue600 50%',
-     }}
-    >
-     Damián Hernández Huchín
-    </Text>
+    <Link href='/'>
+     <Text
+      h3
+      css={{
+       textGradient: '45deg, $green600 -20%, $blue600 50%',
+      }}
+     >
+      Damián Hernández Huchín
+     </Text>
+    </Link>
    </Grid>
    <Grid xs={6}>
     <Grid.Container justify="space-evenly" alignContent="center">
@@ -44,7 +46,7 @@ const Header = () => {
       <IoBookOutline />
       <Text h5>Blog</Text>
      </Link>
-     <Link color={'text'} href="/" style={{ alignItems: 'center' }}>
+     <Link color={'text'} href="/Videos" style={{ alignItems: 'center' }}>
       <IoVideocamOutline />
       <Text h5>Videos</Text>
      </Link>
