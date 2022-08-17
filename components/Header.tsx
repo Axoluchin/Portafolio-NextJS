@@ -25,7 +25,7 @@ const Header = () => {
      <Text
       h3
       css={{
-       textGradient: '45deg, $green600 -20%, $blue600 50%',
+       textGradient: '75deg, $green600 0%, $blue600 50%, $purple600 100%',
       }}
      >
       Damián Hernández Huchín

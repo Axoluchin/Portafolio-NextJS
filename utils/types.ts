@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore"
 export interface project {
  name: string
  image: string
@@ -29,6 +30,8 @@ export interface blog {
     image: string,
     desc: string,
     startText: string,
+    finalText: string
     blog: string[]
     id: string
+    date: Timestamp
 }

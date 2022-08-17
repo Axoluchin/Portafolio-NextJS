@@ -1,5 +1,14 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, getDocs, collection,query, orderBy } from 'firebase/firestore'
+import {
+ getFirestore,
+ getDocs,
+ collection,
+ query,
+ orderBy,
+ doc,
+ getDoc,
+ limit,
+} from 'firebase/firestore'
 
 import { project, codeLenguaje, blog } from './types'
 
@@ -36,42 +45,72 @@ export const getProjects = async () => {
 }
 
 export const getCodeLenguajes = async () => {
- const querySnapshot = await getDocs(query(collection(db, CollectionCode),orderBy('rating','desc')))
- const projectList: codeLenguaje[] = []
+ const querySnapshot = await getDocs(
+  query(collection(db, CollectionCode), orderBy('rating', 'desc'))
+ )
+ const codeList: codeLenguaje[] = []
  querySnapshot.forEach(doc => {
-  const project = {
+  const code = {
    ...doc.data(),
    id: doc.id,
   } as codeLenguaje
-  projectList.push(project)
+  codeList.push(code)
+ })
+
+ return codeList
+}
+
+export const getTools = async () => {
+ const querySnapshot = await getDocs(
+  query(collection(db, CollectionTools), orderBy('rating', 'desc'))
+ )
+ const projectList: codeLenguaje[] = []
+ querySnapshot.forEach(doc => {
+  const tool = {
+   ...doc.data(),
+   id: doc.id,
+  } as codeLenguaje
+  projectList.push(tool)
  })
 
  return projectList
 }
 
-export const getTools = async () => {
-    const querySnapshot = await getDocs(query(collection(db, CollectionTools),orderBy('rating','desc')))
-    const projectList: codeLenguaje[] = []
-    querySnapshot.forEach(doc => {
-     const project = {
-      ...doc.data(),
-      id: doc.id,
-     } as codeLenguaje
-     projectList.push(project)
-    })
-   
-    return projectList
-   }
+export const getBlogs = async () => {
+ const querySnapshot = await getDocs(query(collection(db, CollectionBlog)))
+ const blogList: blog[] = []
+ querySnapshot.forEach(doc => {
+  const blog = {
+   ...doc.data(),
+   id: doc.id,
+  } as blog
+  blogList.push(blog)
+ })
+ return blogList
+}
 
-   export const getBlogs = async () => {
-    const querySnapshot = await getDocs(query(collection(db, CollectionBlog)))
-    const blogList: blog[] = []
-    querySnapshot.forEach(doc => {
-     const project = {
-      ...doc.data(),
-      id: doc.id,
-     } as blog
-     blogList.push(project)
-    })
-    return blogList
-   }
+export const getBlog = async (id: string) => {
+ const docRef = doc(db, CollectionBlog, id)
+ const docSnap = await getDoc(docRef)
+
+ if (docSnap.exists()) {
+  return docSnap.data() as blog
+ } else {
+  return null
+ }
+}
+
+export const getLastBlogs = async () => {
+ const querySnapshot = await getDocs(
+  query(collection(db, CollectionBlog), limit(5))
+ )
+ const blogList: blog[] = []
+ querySnapshot.forEach(doc => {
+  const blog = {
+   ...doc.data(),
+   id: doc.id,
+  } as blog
+  blogList.push(blog)
+ })
+ return blogList
+}
