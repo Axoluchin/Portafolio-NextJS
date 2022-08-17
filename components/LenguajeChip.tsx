@@ -1,5 +1,6 @@
-import { Text } from '@nextui-org/react'
-import { IoLogoReact, IoLogoFirebase} from 'react-icons/io5'
+import { Grid, Text } from '@nextui-org/react'
+import { IoLogoReact, IoLogoFirebase } from 'react-icons/io5'
+import { SiRedux, SiTypescript, SiGraphql, SiExpo } from 'react-icons/si'
 
 const LenguajeChip = ({ lengaje }: { lengaje: string }) => {
  const setColor = () => {
@@ -12,6 +13,10 @@ const LenguajeChip = ({ lengaje }: { lengaje: string }) => {
     return '#3178c6'
    case 'RD':
     return '#764abc'
+   case 'Expo':
+    return '#737373'
+   case 'GQL':
+    return '#E10098'
    default:
     return 'transparent'
   }
@@ -27,6 +32,8 @@ const LenguajeChip = ({ lengaje }: { lengaje: string }) => {
     return 'Typescript'
    case 'RD':
     return 'Redux'
+   case 'GQL':
+    return 'GraphQL'
    default:
     return lengaje
   }
@@ -35,31 +42,39 @@ const LenguajeChip = ({ lengaje }: { lengaje: string }) => {
  const setIcon = () => {
   switch (lengaje) {
    case 'RN':
-    return <IoLogoReact/>
+    return <IoLogoReact />
    case 'FB':
-    return <IoLogoFirebase/>
+    return <IoLogoFirebase />
    case 'TS':
-    return ''
+    return <SiTypescript />
    case 'RD':
-    return ''
+    return <SiRedux />
+   case 'GQL':
+    return <SiGraphql />
+   case 'Expo':
+    return <SiExpo />
    default:
     return <></>
   }
  }
 
  return (
-  <Text
+  <Grid
    style={{
     background: setColor(),
     borderRadius: 8,
-    padding: '0.01rem 0.5rem',
+    padding: '0.05rem 0.3rem',
     margin: 8,
+    width: 'auto',
    }}
-   b
   >
-    {setIcon()}{' '}
-   {setName()}
-  </Text>
+   <Grid.Container alignItems="center">
+    {setIcon()}
+    <Text b style={{ marginLeft: 8 }}>
+     {setName()}
+    </Text>
+   </Grid.Container>
+  </Grid>
  )
 }
 

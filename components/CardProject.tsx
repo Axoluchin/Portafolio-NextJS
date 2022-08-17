@@ -15,13 +15,13 @@ const CardProject = ({ project }: { project: project }) => (
  >
   <Card.Image src={project.image} height={150} />
   <Card.Header>
-   <Grid.Container justify="space-between">
+   <Grid.Container gap={1} justify="space-between">
     <Text h3>{project.name}</Text>
    </Grid.Container>
   </Card.Header>
   <Card.Divider />
   <Card.Body>
-   <Grid.Container justify="flex-start" alignContent="center" style={{marginBottom: 8}}>
+   <Grid.Container justify="flex-start" style={{marginBottom: 8}}>
     {project.tech.map(leng => (
      <LenguajeChip key={leng} lengaje={leng} />
     ))}
