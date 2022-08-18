@@ -1,4 +1,5 @@
-import { Text, Grid, Link, useTheme } from '@nextui-org/react'
+import Link from 'next/link'
+import { Text, Grid, Link as NextUILink, useTheme } from '@nextui-org/react'
 import {
  IoHomeOutline,
  IoVideocamOutline,
@@ -17,39 +18,49 @@ const Header = () => {
     borderColor: theme?.colors.border.value,
     borderBottomWidth: 1,
     borderStyle: 'solid',
-    marginBottom: 8
+    marginBottom: 8,
    }}
   >
    <Grid xs={6}>
-    <Link href='/'>
-     <Text
-      h3
-      css={{
-       textGradient: '75deg, $green600 0%, $blue600 50%, $purple600 100%',
-      }}
-     >
-      Damián Hernández Huchín
-     </Text>
+    <Link href="/">
+     <NextUILink>
+      <Text
+       h3
+       css={{
+        textGradient: '75deg, $green600 0%, $blue600 50%, $purple600 100%',
+       }}
+      >
+       Damián Hernández Huchín
+      </Text>
+     </NextUILink>
     </Link>
    </Grid>
    <Grid xs={6}>
     <Grid.Container justify="space-evenly" alignContent="center">
-     <Link color={'text'} href="/" style={{ alignItems: 'center' }}>
-      <IoHomeOutline />
-      <Text h5>Inicio</Text>
+     <Link href="/">
+      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
+       <IoHomeOutline />
+       <Text h5>Inicio</Text>
+      </NextUILink>
      </Link>
-     <Link color={'text'} href="/Portafolio" style={{ alignItems: 'center' }}>
-      <IoFolderOutline />
-      <Text h5>Portafolio</Text>
+     <Link href="/Portafolio">
+      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
+       <IoFolderOutline />
+       <Text h5>Portafolio</Text>
+      </NextUILink>
      </Link>
-     <Link color={'text'} href="/Blog" style={{ alignItems: 'center' }}>
-      <IoBookOutline />
-      <Text h5>Blog</Text>
+     <Link href="/Blog">
+      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
+       <IoBookOutline />
+       <Text h5>Blog</Text>
+      </NextUILink>
      </Link>
-     <Link color={'text'} href="/Videos" style={{ alignItems: 'center' }}>
-      <IoVideocamOutline />
-      <Text h5>Videos</Text>
-     </Link>
+     {/* <Link href="/Videos">
+      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
+       <IoVideocamOutline />
+       <Text h5>Videos</Text>
+      </NextUILink>
+     </Link> */}
     </Grid.Container>
    </Grid>
   </Grid.Container>

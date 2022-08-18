@@ -39,7 +39,9 @@ const Post = ({ blogData }: { blogData: blog | null }) => {
     {blogData.blog.map((data, index) =>
      index % 2 ? (
       <div key={index}>
-       <Text>{data}</Text>
+       <Text style={{
+        textAlign: 'justify'
+       }}>{data}</Text>
        <Spacer y={1} />
       </div>
      ) : (

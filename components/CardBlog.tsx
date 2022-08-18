@@ -1,4 +1,5 @@
-import { Card, Text, Link } from '@nextui-org/react'
+import Link from 'next/link'
+import { Card, Text, Link as NextUILink } from '@nextui-org/react'
 import { blog } from '../utils/types'
 
 const CardBlog = ({ data }: { data: blog }) => (
@@ -10,34 +11,35 @@ const CardBlog = ({ data }: { data: blog }) => (
   isHoverable
   isPressable
  >
-  <Link
-   block
-   href={`/Blog/${data.id}`}
-   style={{
-    flexDirection: 'row',
-    alignItems: 'center',
-   }}
-  >
-   <div>
-    <Card.Image src={data.image} width={250} />
-    <Text
-     style={{
-      fontWeight: 'lighter',
-     }}
-    >
-     {data.date.toDate().toLocaleDateString('es-mx', {
+  <Link href={`/Blog/${data.id}`}>
+   <NextUILink
+    block
+    style={{
+     flexDirection: 'row',
+     alignItems: 'center',
+    }}
+   >
+    <div>
+     <Card.Image src={data.image} width={250} />
+     <Text
+      style={{
+       fontWeight: 'lighter',
+      }}
+     >
+      {new Date(data.date.seconds*1000).toLocaleDateString('es-mx', {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
       year: 'numeric',
      })}
-    </Text>
-   </div>
-   <Card.Body>
-    <Text h3>{data.title}</Text>
-    <Card.Divider />
-    <Text>{data.desc}</Text>
-   </Card.Body>
+     </Text>
+    </div>
+    <Card.Body>
+     <Text h3>{data.title}</Text>
+     <Card.Divider />
+     <Text>{data.desc}</Text>
+    </Card.Body>
+   </NextUILink>
   </Link>
  </Card>
 )

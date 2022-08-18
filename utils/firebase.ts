@@ -80,10 +80,8 @@ export const getBlogs = async () => {
  const querySnapshot = await getDocs(query(collection(db, CollectionBlog)))
  const blogList: blog[] = []
  querySnapshot.forEach(doc => {
-  const blog = {
-   ...doc.data(),
-   id: doc.id,
-  } as blog
+  const blogFB = doc.data() as blogFirebase
+  const blog = { ...blogFB, date: blogFB.date.toJSON(), id: doc.id } as blog
   blogList.push(blog)
  })
  return blogList
@@ -95,7 +93,7 @@ export const getBlog = async (id: string) => {
 
  if (docSnap.exists()) {
   const blogFB = docSnap.data() as blogFirebase
-  const blog = { ...blogFB, date: blogFB.date.toJSON() } as blog
+  const blog = { ...blogFB, date: blogFB.date.toJSON(), id: docSnap.id } as blog
 
   return blog
  } else {
@@ -109,10 +107,8 @@ export const getLastBlogs = async () => {
  )
  const blogList: blog[] = []
  querySnapshot.forEach(doc => {
-  const blog = {
-   ...doc.data(),
-   id: doc.id,
-  } as blog
+  const blogFB = doc.data() as blogFirebase
+  const blog = { ...blogFB, date: blogFB.date.toJSON(), id: doc.id } as blog
   blogList.push(blog)
  })
  return blogList

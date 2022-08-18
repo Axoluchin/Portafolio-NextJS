@@ -1,32 +1,22 @@
-import { useState, useEffect } from 'react'
-
-import useIsMounted from '../../hooks/useIsMounted'
 import CardBlog from '../../components/CardBlog'
 import SubTitle from '../../components/SubTitle'
 import { getBlogs } from '../../utils/firebase'
 import { blog } from '../../utils/types'
 
-const Blog = () => {
- const IsMounted = useIsMounted()
- const [blogList, setBlogList] = useState<blog[]>([])
-
- useEffect(() => {
-    getBlogs().then(data => setBlogList(data))
- }, [])
-
- if (!IsMounted) {
-  return null
- }
+const Blog = ({ blogList }: { blogList: blog[] }) => {
  return (
   <div>
-   <SubTitle text='Blog'/>
-   {
-    blogList.map(data =>(
-        <CardBlog key={data.id} data={data}/>
-    ))
-   }
+   <SubTitle text="Blog" />
+   {blogList.map(data => (
+    <CardBlog key={data.id} data={data} />
+   ))}
   </div>
  )
 }
 
 export default Blog
+
+export const getServerSideProps = async () => {
+ const blogList = await getBlogs()
+ return { props: { blogList } }
+}

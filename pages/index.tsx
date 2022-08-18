@@ -1,5 +1,3 @@
-import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
 import { Text } from '@nextui-org/react'
 
 import SubTitle from '../components/SubTitle'
@@ -8,12 +6,7 @@ import { getLastBlogs } from '../utils/firebase'
 import { blog } from '../utils/types'
 import imgBg from '../public/images/mexicanMountain.webp'
 
-const Home: NextPage = () => {
- const [lastBlogs, setLastBlogs] = useState<blog[]>([])
- useEffect(() => {
-  getLastBlogs().then(setLastBlogs)
- }, [])
-
+const Home = ({ lastBlogs }: { lastBlogs: blog[] }) => {
  return (
   <div>
    <div
@@ -53,3 +46,8 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps = async () => {
+ const lastBlogs = await getLastBlogs()
+ return { props: { lastBlogs } }
+}
