@@ -1,20 +1,10 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Text, Spacer, Image } from '@nextui-org/react'
 
 import SubTitle from '../../../components/SubTitle'
 import { blog } from '../../../utils/types'
 import { getBlog } from '../../../utils/firebase'
 
-const Post = () => {
- const [blogData, setBlogData] = useState<blog | null>(null)
- const router = useRouter()
- const { id } = router.query
-
- useEffect(() => {
-  id && getBlog(id as string).then(setBlogData)
- }, [id])
-
+const Post = ({ blogData }: { blogData: blog | null }) => {
  if (!blogData) {
   return <Text>Articulo no econtrado D:</Text>
  }
@@ -37,7 +27,7 @@ const Post = () => {
       fontWeight: 'bold',
      }}
     >
-     {blogData.date.toDate().toLocaleDateString('es-mx', {
+     {new Date(blogData.date.seconds*1000).toLocaleDateString('es-mx', {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
@@ -65,3 +55,14 @@ const Post = () => {
 }
 
 export default Post
+
+export const getServerSideProps = async ({
+ params,
+}: {
+ params: { id: string }
+}) => {
+ const { id } = params
+ const blogData = await getBlog(id)
+
+ return { props: { blogData } }
+}

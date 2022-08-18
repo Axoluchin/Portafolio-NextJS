@@ -1,4 +1,4 @@
-import { Timestamp } from "firebase/firestore"
+import { Timestamp } from 'firebase/firestore'
 export interface project {
  name: string
  image: string
@@ -12,10 +12,10 @@ export interface project {
 }
 
 export interface codeLenguaje {
-    image: string,
-    name: string,
-    rating: number,
-    id: string
+ image: string
+ name: string
+ rating: number
+ id: string
 }
 
 export interface video {
@@ -25,13 +25,26 @@ export interface video {
  desc: string
 }
 
+export interface blogFirebase {
+ title: string
+ image: string
+ desc: string
+ startText: string
+ finalText: string
+ blog: string[]
+ id: string
+ date: Timestamp
+}
 export interface blog {
-    title: string,
-    image: string,
-    desc: string,
-    startText: string,
-    finalText: string
-    blog: string[]
-    id: string
-    date: Timestamp
+ title: string
+ image: string
+ desc: string
+ startText: string
+ finalText: string
+ blog: string[]
+ id: string
+ date: {
+  seconds: number
+  nanoseconds: number
+ }
 }

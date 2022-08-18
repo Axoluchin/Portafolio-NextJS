@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
 import { Grid, Text, Link } from '@nextui-org/react'
 import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5'
 
-import useIsMounted from '../hooks/useIsMounted'
 import CardProject from '../components/CardProject'
 import CardCode from '../components/CardCode'
 import SubTitle from '../components/SubTitle'
@@ -10,22 +8,15 @@ import MiniTitle from '../components/MiniTittle'
 import { getProjects, getCodeLenguajes, getTools } from '../utils/firebase'
 import { project, codeLenguaje } from '../utils/types'
 
-const Portafolio = () => {
- const IsMounted = useIsMounted()
- const [projectList, setProjectList] = useState<project[]>([])
- const [codeList, setCodeList] = useState<codeLenguaje[]>([])
-const [toolList, setToolList] = useState<codeLenguaje[]>([])
-
- useEffect(() => {
-  getProjects().then(data => setProjectList(data))
-  getCodeLenguajes().then(data => setCodeList(data))
-  getTools().then(data => setToolList(data))
- }, [])
-
- if (!IsMounted) {
-  return null
- }
-
+const Portafolio = ({
+ projectList,
+ codeList,
+ toolList,
+}: {
+ projectList: project[]
+ codeList: codeLenguaje[]
+ toolList: codeLenguaje[]
+}) => {
  return (
   <div>
    <SubTitle text="Experiencia" />
@@ -82,3 +73,11 @@ const [toolList, setToolList] = useState<codeLenguaje[]>([])
 }
 
 export default Portafolio
+
+export const getServerSideProps = async () => {
+ const projectList = await getProjects()
+ const codeList = await getCodeLenguajes()
+ const toolList = await getTools()
+
+ return { props: { projectList, codeList, toolList } }
+}

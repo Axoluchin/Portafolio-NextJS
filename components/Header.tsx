@@ -17,7 +17,7 @@ const Header = () => {
     borderColor: theme?.colors.border.value,
     borderBottomWidth: 1,
     borderStyle: 'solid',
-    marginBottom: 8,
+    marginBottom: 8
    }}
   >
    <Grid xs={6}>

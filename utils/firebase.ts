@@ -10,7 +10,7 @@ import {
  limit,
 } from 'firebase/firestore'
 
-import { project, codeLenguaje, blog } from './types'
+import { project, codeLenguaje, blog, blogFirebase } from './types'
 
 const firebaseConfig = {
  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -94,7 +94,10 @@ export const getBlog = async (id: string) => {
  const docSnap = await getDoc(docRef)
 
  if (docSnap.exists()) {
-  return docSnap.data() as blog
+  const blogFB = docSnap.data() as blogFirebase
+  const blog = { ...blogFB, date: blogFB.date.toJSON() } as blog
+
+  return blog
  } else {
   return null
  }
