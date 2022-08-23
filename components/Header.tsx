@@ -18,7 +18,9 @@ const Header = () => {
     borderColor: theme?.colors.border.value,
     borderBottomWidth: 1,
     borderStyle: 'solid',
-    marginBottom: 8,
+    position: 'fixed',
+    top: 0,
+    zIndex: 1
    }}
   >
    <Grid xs={6}>
@@ -29,6 +31,7 @@ const Header = () => {
        css={{
         textGradient: '75deg, $green600 0%, $blue600 50%, $purple600 100%',
        }}
+       className='NameHead'
       >
        Damián Hernández Huchín
       </Text>

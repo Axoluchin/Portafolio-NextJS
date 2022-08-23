@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { NextUIProvider } from '@nextui-org/react'
+import { NextUIProvider, Spacer } from '@nextui-org/react'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
  return (
   <NextUIProvider theme={mainTheme}>
    <Header />
+   <Spacer y={3}/>
    <Component {...pageProps} />
    <Footer/>
   </NextUIProvider>

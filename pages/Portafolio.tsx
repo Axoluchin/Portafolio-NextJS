@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Grid, Text, Link } from '@nextui-org/react'
 import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5'
 
@@ -7,6 +8,7 @@ import SubTitle from '../components/SubTitle'
 import MiniTitle from '../components/MiniTittle'
 import { getProjects, getCodeLenguajes, getTools } from '../utils/firebase'
 import { project, codeLenguaje } from '../utils/types'
+import imgBg from '../public/images/MacCover.webp'
 
 const Portafolio = ({
  projectList,
@@ -19,6 +21,39 @@ const Portafolio = ({
 }) => {
  return (
   <div>
+    <Head>
+        <title>Damián Huchín Portafolio</title>
+    </Head>
+   <div
+    style={{
+     backgroundImage: `url(${imgBg.src})`,
+     height: '400px',
+     backgroundSize: 'cover',
+     backgroundPosition: 'center',
+     backgroundRepeat: 'no-repeat',
+     padding: '100px 0',
+     marginTop: '2rem',
+    }}
+   >
+    <Text
+     h1
+     style={{
+      textAlign: 'center',
+      textShadow: '5px 0px 0px #444444'
+     }}
+    >
+     Damián Hernández Huchín
+    </Text>
+    <Text
+     h3
+     style={{
+        textAlign: 'center',
+        textShadow: '-4px 0px 0px #444444'
+       }}
+    >
+     Programador Mobile y Frontend
+    </Text>
+   </div>
    <SubTitle text="Experiencia" />
    <Grid.Container gap={2} justify="center">
     {projectList.map(data => (

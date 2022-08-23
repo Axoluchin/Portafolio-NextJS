@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Text } from '@nextui-org/react'
 
 import SubTitle from '../components/SubTitle'
@@ -9,6 +10,9 @@ import imgBg from '../public/images/mexicanMountain.webp'
 const Home = ({ lastBlogs }: { lastBlogs: blog[] }) => {
  return (
   <div>
+    <Head>
+        <title>Damián Hernández Huchín</title>
+    </Head>
    <div
     style={{
      backgroundImage: `url(${imgBg.src})`,

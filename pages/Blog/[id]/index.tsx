@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { Text, Spacer, Image } from '@nextui-org/react'
 
 import SubTitle from '../../../components/SubTitle'
@@ -11,6 +12,9 @@ const Post = ({ blogData }: { blogData: blog | null }) => {
 
  return (
   <div>
+    <Head>
+        <title>{blogData.title}</title>
+    </Head>
    <Image src={blogData.image} alt={blogData.title} height={250} />
    <SubTitle text={blogData.title} />
    <div
