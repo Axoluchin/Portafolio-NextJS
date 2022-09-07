@@ -3,7 +3,7 @@ import { IoHomeOutline, IoFolderOutline, IoBookOutline } from 'react-icons/io5'
 
 const Header = () => {
  return (
-  <Navbar isBordered isCompact shouldHideOnScroll variant="sticky">
+  <Navbar isBordered  isCompact shouldHideOnScroll variant="sticky">
    <Navbar.Brand>
       <Text
        h3

@@ -1,16 +1,20 @@
-import { Text, useTheme } from '@nextui-org/react'
+import { Row, Spacer, Text, useTheme, Link } from '@nextui-org/react'
+import { IoStar } from 'react-icons/io5'
 
 const Footer = () => {
- const {theme} = useTheme()
+ const { theme } = useTheme()
  return (
-  <div
+  <Row
+   align="center"
+   justify="space-between"
    style={{
-    height: '5rem',
+    height: '6rem',
     borderTopStyle: 'solid',
     borderTopWidth: 1,
     borderTopColor: theme?.colors.neutralBorder.value,
     marginTop: '1rem',
-    backgroundColor: theme?.colors.backgroundContrast.value
+    padding: '1rem',
+    backgroundColor: theme?.colors.backgroundContrast.value,
    }}
   >
    <Text
@@ -20,7 +24,28 @@ const Footer = () => {
    >
     Damián Hernández Huchín 2022
    </Text>
-  </div>
+   <Link href='#header' color='inherit'>
+    <IoStar size={32}/>
+   </Link>
+   <div
+    style={{
+     display: 'flex',
+     flexDirection: 'row',
+    }}
+   >
+    <Link color="inherit" href="https://twitter.com/DamianHuchin" target="_blank">
+     Twitter
+    </Link>
+    <Spacer x={1} />
+    <Link color="inherit" href="https://github.com/Axoluchin" target="_blank">
+     Github
+    </Link>
+    <Spacer x={1} />
+    <Link color="inherit" href="https://www.linkedin.com/in/damianhuchin/" target="_blank">
+     LinkedIn
+    </Link>
+   </div>
+  </Row>
  )
 }
 

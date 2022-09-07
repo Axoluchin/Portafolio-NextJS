@@ -9,8 +9,9 @@ import mainTheme from '../utils/theme'
 function MyApp({ Component, pageProps }: AppProps) {
  return (
   <NextUIProvider theme={mainTheme}>
+   <div id='header'/>
    <Header />
-   <Component {...pageProps} />
+   <Component {...pageProps}/>
    <Footer/>
   </NextUIProvider>
  )
