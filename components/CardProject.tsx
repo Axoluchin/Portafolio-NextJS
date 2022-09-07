@@ -1,4 +1,4 @@
-import { Card, Text, Link, Grid } from '@nextui-org/react'
+import { Card, Text, Link, Grid, Row } from '@nextui-org/react'
 import { IoLogoGithub } from 'react-icons/io5'
 
 import LenguajeChip from './LenguajeChip'
@@ -10,7 +10,8 @@ const CardProject = ({ project }: { project: project }) => (
   isHoverable
   variant="bordered"
   style={{
-   minWidth: '30%',
+   width: '300px',
+   margin: '1.5rem 0.5rem'
   }}
  >
   <Card.Image src={project.image} height={150} />
@@ -21,11 +22,11 @@ const CardProject = ({ project }: { project: project }) => (
   </Card.Header>
   <Card.Divider />
   <Card.Body>
-   <Grid.Container justify="flex-start" style={{marginBottom: 8}}>
+   <Row justify="center" wrap='wrap' style={{marginBottom: 16}}>
     {project.tech.map(leng => (
      <LenguajeChip key={leng} lengaje={leng} />
     ))}
-   </Grid.Container>
+   </Row>
    <Card.Divider />
    <Text b>{project.resume}</Text>
    <Text
@@ -40,7 +41,7 @@ const CardProject = ({ project }: { project: project }) => (
   <Card.Divider />
   <Card.Footer>
    {project.webPage && (
-    <Link href={project.webPage} target='_blank' icon color="primary">
+    <Link href={project.webPage} target='_blank' color="primary">
      <Text color="primary">Sitio Web
      </Text>
     </Link>

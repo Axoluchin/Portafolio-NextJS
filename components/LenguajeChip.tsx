@@ -1,4 +1,4 @@
-import { Grid, Text } from '@nextui-org/react'
+import { Row, Text } from '@nextui-org/react'
 import { IoLogoReact, IoLogoFirebase } from 'react-icons/io5'
 import { SiRedux, SiTypescript, SiGraphql, SiExpo } from 'react-icons/si'
 
@@ -59,22 +59,23 @@ const LenguajeChip = ({ lengaje }: { lengaje: string }) => {
  }
 
  return (
-  <Grid
+  <Row
    style={{
-    background: setColor(),
+    outlineStyle: 'solid',
+    outlineWidth: 2,
+    outlineColor: setColor(),
     borderRadius: 8,
     padding: '0.05rem 0.3rem',
-    margin: 8,
+    margin: 6,
     width: 'auto',
    }}
+   align='center'
   >
-   <Grid.Container alignItems="center">
     {setIcon()}
     <Text b style={{ marginLeft: 8 }}>
      {setName()}
     </Text>
-   </Grid.Container>
-  </Grid>
+  </Row>
  )
 }
 

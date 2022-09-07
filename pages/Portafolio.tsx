@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Grid, Text, Link } from '@nextui-org/react'
+import { Grid, Text, Link, Row } from '@nextui-org/react'
 import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5'
 
 import CardProject from '../components/CardProject'
@@ -20,7 +20,10 @@ const Portafolio = ({
  toolList: codeLenguaje[]
 }) => {
  return (
-  <div>
+  <div style={{
+    maxWidth: 900,
+    margin: '0 auto'
+  }}>
     <Head>
         <title>Damián Huchín Portafolio</title>
     </Head>
@@ -31,8 +34,7 @@ const Portafolio = ({
      backgroundSize: 'cover',
      backgroundPosition: 'center',
      backgroundRepeat: 'no-repeat',
-     padding: '100px 0',
-     marginTop: '2rem',
+     padding: '100px 0'
     }}
    >
     <Text
@@ -55,54 +57,42 @@ const Portafolio = ({
     </Text>
    </div>
    <SubTitle text="Experiencia" />
-   <Grid.Container gap={2} justify="center">
+   <Row justify="space-around" wrap='wrap'>
     {projectList.map(data => (
-     <Grid key={data.id} xs={6} md={3}>
-      <CardProject project={data} />
-     </Grid>
+      <CardProject project={data} key={data.id}/>
     ))}
-   </Grid.Container>
+   </Row>
    <SubTitle text="Skills" />
    <MiniTitle title="Lenguajes y Frameworks" position="left" />
-   <Grid.Container gap={1} justify="center">
+   <Row justify="space-around" wrap='wrap'>
     {codeList.map(data => (
-     <Grid key={data.id}>
-      <CardCode data={data} />
-     </Grid>
+      <CardCode data={data} key={data.id}/>
     ))}
-   </Grid.Container>
+   </Row>
    <MiniTitle title="Herramientas" position="right" />
-   <Grid.Container gap={1} justify="center">
+   <Row justify="space-around" wrap='wrap'>
     {toolList.map(data => (
-     <Grid key={data.id}>
-      <CardCode data={data} />
-     </Grid>
+      <CardCode data={data} key={data.id}/>
     ))}
-   </Grid.Container>
+   </Row>
    <SubTitle text="Contacto" />
-   <Grid.Container gap={4} justify="space-around">
-    <Grid>
+   <Row justify="space-around" wrap='wrap'>
      <Link href="https://www.linkedin.com/in/damianhuchin/" target="_blank">
       <Text h2 color="$blue500">
        <IoLogoLinkedin /> Linkedin
       </Text>
      </Link>
-    </Grid>
-    <Grid>
      <Link href="https://github.com/Axoluchin" target="_blank">
       <Text h2 color="$gray800">
        <IoLogoGithub /> Github
       </Text>
      </Link>
-    </Grid>
-    <Grid>
      <Link href="https://twitter.com/DamianHuchin" target="_blank">
       <Text h2 color="$blue700">
        <IoLogoTwitter /> Twitter
       </Text>
      </Link>
-    </Grid>
-   </Grid.Container>
+   </Row>
   </div>
  )
 }

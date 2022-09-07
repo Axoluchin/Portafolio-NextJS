@@ -6,7 +6,7 @@ const CardBlog = ({ data }: { data: blog }) => (
  <Card
   style={{
    maxWidth: 600,
-   margin: '0 auto',
+   margin: '1rem auto',
   }}
   isHoverable
   isPressable

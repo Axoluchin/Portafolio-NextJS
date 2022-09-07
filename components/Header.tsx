@@ -1,72 +1,56 @@
-import Link from 'next/link'
-import { Text, Grid, Link as NextUILink, useTheme } from '@nextui-org/react'
-import {
- IoHomeOutline,
- IoVideocamOutline,
- IoFolderOutline,
- IoBookOutline,
-} from 'react-icons/io5'
+import { Text, Navbar, Link } from '@nextui-org/react'
+import { IoHomeOutline, IoFolderOutline, IoBookOutline } from 'react-icons/io5'
 
 const Header = () => {
- const { theme } = useTheme()
  return (
-  <Grid.Container
-   gap={2}
-   justify="space-between"
-   style={{
-    backgroundColor: theme?.colors.backgroundContrast.value,
-    borderColor: theme?.colors.border.value,
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    position: 'fixed',
-    top: 0,
-    zIndex: 1
-   }}
-  >
-   <Grid xs={6}>
-    <Link href="/">
-     <NextUILink>
+  <Navbar isBordered isCompact shouldHideOnScroll variant="sticky">
+   <Navbar.Brand>
       <Text
        h3
        css={{
         textGradient: '75deg, $green600 0%, $blue600 50%, $purple600 100%',
        }}
-       className='NameHead'
+       className="NameHead"
+       style={{
+        margin: 0,
+       }}
       >
        Damián Hernández Huchín
       </Text>
-     </NextUILink>
-    </Link>
-   </Grid>
-   <Grid xs={6}>
-    <Grid.Container justify="space-evenly" alignContent="center">
-     <Link href="/">
-      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
-       <IoHomeOutline />
-       <Text h5>Inicio</Text>
-      </NextUILink>
+   </Navbar.Brand>
+   <Navbar.Content enableCursorHighlight hideIn="xs" variant="underline">
+    <Navbar.Link href="/">
+     <IoHomeOutline />
+     Inicio
+    </Navbar.Link>
+    <Navbar.Link href="/Portafolio">
+     <IoFolderOutline /> Portafolio
+    </Navbar.Link>
+    <Navbar.Link href="/Blog">
+     <IoBookOutline /> Blog
+    </Navbar.Link>
+   </Navbar.Content>
+   <Navbar.Toggle aria-label="toggle navigation" showIn={'xs'} />
+   <Navbar.Collapse showIn={'xs'}>
+    <Navbar.CollapseItem>
+     <Link color="inherit" href="/">
+      <IoHomeOutline />
+      Inicio
      </Link>
-     <Link href="/Portafolio">
-      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
-       <IoFolderOutline />
-       <Text h5>Portafolio</Text>
-      </NextUILink>
+    </Navbar.CollapseItem>
+    <Navbar.CollapseItem>
+     <Link color="inherit" href="/Portafolio">
+      <IoFolderOutline />
+      Portafolio
      </Link>
-     <Link href="/Blog">
-      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
-       <IoBookOutline />
-       <Text h5>Blog</Text>
-      </NextUILink>
+    </Navbar.CollapseItem>
+    <Navbar.CollapseItem>
+     <Link color="inherit" href="/Blog">
+      <IoBookOutline /> Blog
      </Link>
-     {/* <Link href="/Videos">
-      <NextUILink color={'text'} style={{ alignItems: 'center' }}>
-       <IoVideocamOutline />
-       <Text h5>Videos</Text>
-      </NextUILink>
-     </Link> */}
-    </Grid.Container>
-   </Grid>
-  </Grid.Container>
+    </Navbar.CollapseItem>
+   </Navbar.Collapse>
+  </Navbar>
  )
 }
 

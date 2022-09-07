@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }: AppProps) {
  return (
   <NextUIProvider theme={mainTheme}>
    <Header />
-   <Spacer y={3}/>
    <Component {...pageProps} />
    <Footer/>
   </NextUIProvider>

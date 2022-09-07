@@ -3,9 +3,9 @@ import { codeLenguaje } from "../utils/types"
 
 const CardCode = ({data}:{data:codeLenguaje}) => (
 <Card isHoverable style={{
-    width: 240,
+    width: 'auto',
     backgroundColor: 'transparent',
-    margin: 8
+    margin: '1.5rem'
 }}>
     <Card.Image src={data.image} height={100}/>
         <Text h3 style={{
