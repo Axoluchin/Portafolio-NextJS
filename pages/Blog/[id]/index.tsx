@@ -18,6 +18,11 @@ const Post = ({ blogData }: { blogData: blog | null }) => {
         <meta property="og:title" content={blogData.title} />
         <meta property="og:description" content={blogData.desc} />
         <meta property="og:image" content={blogData.image} />
+        <meta property="twitter:image" content={blogData.image}/>
+        <meta property="twitter:card" content="article" />
+        <meta name="twitter:site" content="@DamianHuchin" />
+        <meta name="twitter:description" content={blogData.desc} />
+        <meta name="twitter:title" content={blogData.title} />
     </Head>
    <Image src={blogData.image} alt={blogData.title} height={250} />
    <SubTitle text={blogData.title} />
