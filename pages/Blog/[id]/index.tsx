@@ -14,6 +14,10 @@ const Post = ({ blogData }: { blogData: blog | null }) => {
   <div>
     <Head>
         <title>{blogData.title}</title>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={blogData.title} />
+        <meta property="og:description" content={blogData.desc} />
+        <meta property="og:image" content={blogData.image} />
     </Head>
    <Image src={blogData.image} alt={blogData.title} height={250} />
    <SubTitle text={blogData.title} />
